@@ -2,25 +2,27 @@
 session_start();
 require_once 'database_connection.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-    $content = trim($_POST['content']);
+if (!isset($_SESSION['userId']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: index.php");
+    exit;
+}
 
-    if (empty($content) || strlen($content) > 280) {
-        $errorMessage = "Message must be between 1 and 280 characters.";
-        header("Location: index.php?error=" . urlencode($errorMessage));
-        exit;
-    }
+$userId = $_SESSION['userId'];
+$content = trim($_POST['content'] ?? '');
 
-    try {
-        $stmt = $pdo->prepare("INSERT INTO messages (user_id, content) VALUES (:userId, :content)");
-        $stmt->execute(['userId' => $userId, 'content' => $content]);
-        header("Location: index.php");
-        exit;
-    } catch (PDOException $e) {
-        $errorMessage = "Error posting message: " . $e->getMessage();
-        header("Location: index.php?error=" . urlencode($errorMessage));
-        exit;
-    }
+if (strlen($content) < 1 || strlen($content) > 1600) {
+    header("Location: index.php?error=" . urlencode("Message must be between 1 and 1600 characters."));
+    exit;
+}
+
+try {
+    $stmt = $pdo->prepare("INSERT INTO messages (user_id, content) VALUES (:userId, :content)");
+    $stmt->execute(['userId' => $userId, 'content' => $content]);
+    header("Location: index.php");
+    exit;
+} catch (PDOException $e) {
+    $errorMessage = "Error posting message: " . $e->getMessage();
+    header("Location: index.php?error=" . urlencode($errorMessage));
+    exit;
 }
 ?>

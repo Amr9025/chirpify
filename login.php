@@ -13,14 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $stmt = $pdo->prepare("SELECT id, handle, password FROM users WHERE handle = :handle");
+        $stmt = $pdo->prepare("SELECT id, handle, password, is_admin FROM users WHERE handle = :handle");
         $stmt->execute(['handle' => $handle]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['userId'] = $user['id'];
             $_SESSION['userHandle'] = $user['handle'];
-            header("Location: index.php");
+            $_SESSION['isAdmin'] = $user['is_admin'];
+            
+            if ($user['is_admin'] == 1) {
+                header("Location: admin.php");
+            } else {
+                header("Location: index.php");
+            }
             exit;
         } else {
             $errorMessage = "Invalid handle or password.";

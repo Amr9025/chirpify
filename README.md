@@ -1,2 +1,0 @@
-# chirpify
-sdl;
