@@ -1,0 +1,406 @@
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #E8F5FD;
+    margin: 0;
+    padding: 0;
+    color: #14171A;
+}
+
+/* Twitter Container */
+.twitter-container {
+    display: flex;
+    max-width: 1190px;
+    margin: 0 auto;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 290px;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    height: 100vh;
+    position: fixed;
+    left: 0; /* Expliciet links vastzetten */
+    top: 0;
+    border-right: 1px solid #E1E8ED;
+    box-sizing: border-box;
+}
+
+.logo h2 {
+    font-size: 20px;
+    color: #1DA1F2;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.sidebar-nav .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    color: #14171A;
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.sidebar-nav .nav-item:hover {
+    color: #1DA1F2;
+}
+
+.sidebar-nav .nav-item.active {
+    color: #1DA1F2;
+}
+
+.tweet-btn {
+    width: 225px;
+    padding: 12px;
+    background-color: #1DA1F2;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+.tweet-btn:hover {
+    background-color: #1991DB;
+}
+
+/* Feed */
+.feed {
+    margin-left: 290px; /* Zorgt dat de feed rechts van de sidebar begint */
+    flex: 1;
+    padding: 0;
+    background-color: #FFFFFF;
+    border-left: 1px solid #E1E8ED;
+    border-right: 1px solid #E1E8ED;
+}
+
+/* Rest van de CSS blijft hetzelfde, hier alleen ter illustratie */
+.feed-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #E1E8ED;
+    background-color: #FFFFFF;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.feed-header h1 {
+    font-size: 19px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.error {
+    color: #E0245E;
+    font-size: 14px;
+    padding: 10px 15px;
+    background-color: #FEE2E2;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* Tweet Form */
+.tweet-form {
+    padding: 10px 15px;
+    border-bottom: 10px solid #E1E8ED;
+}
+
+.tweet-form textarea {
+    width: 100%;
+    min-height: 50px;
+    padding: 10px;
+    border: 1px solid #E1E8ED;
+    font-size: 18px;
+    color: #14171A;
+    resize: none;
+    outline: none;
+    background-color: #F5F8FA;
+    border-radius: 5px;
+}
+
+.tweet-form textarea::placeholder {
+    color: #657786;
+}
+
+/* Tweets */
+.tweets .tweet {
+    display: flex;
+    padding: 10px 15px;
+    border-bottom: 1px solid #E1E8ED;
+    background-color: #FFFFFF;
+    transition: background-color 0.2s;
+}
+
+.tweets .tweet:hover {
+    background-color: #F5F8FA;
+}
+
+.tweet-avatar img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.tweet-content {
+    flex: 1;
+}
+
+.tweet-header .username {
+    font-weight: bold;
+    font-size: 15px;
+    color: #14171A;
+}
+
+.tweet-header .handle {
+    color: #657786;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.tweet-content p {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 5px 0;
+}
+
+.tweet-actions {
+    display: flex;
+    margin-top: 10px;
+}
+
+.tweet-actions span, .tweet-actions button {
+    margin-right: 30px;
+    color: #657786;
+    font-size: 13px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.tweet-actions .like:hover {
+    color: #E0245E;
+}
+
+.tweet-actions .reply:hover {
+    color: #1DA1F2;
+}
+
+.tweet-actions .retweet:hover {
+    color: #17BF63;
+}
+
+/* Profile Styles */
+.profile-main {
+    padding: 0;
+}
+
+.profile-header {
+    position: relative;
+    border-bottom: 1px solid #E1E8ED;
+}
+
+.profile-banner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.profile-info {
+    padding: 15px;
+    position: relative;
+}
+
+.profile-avatar {
+    position: absolute;
+    top: -74px;
+    left: 15px;
+}
+
+.profile-avatar img {
+    width: 134px;
+    height: 134px;
+    border-radius: 50%;
+    border: 4px solid #FFFFFF;
+}
+
+.edit-profile-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 8px 16px;
+    background: none;
+    border: 1px solid #1DA1F2;
+    color: #1DA1F2;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.edit-profile-btn:hover {
+    background-color: #E8F5FD;
+}
+
+.profile-details {
+    margin-top: 70px;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 800;
+    color: #14171A;
+}
+
+.profile-handle {
+    color: #657786;
+    font-size: 15px;
+    display: block;
+    margin: 2px 0;
+}
+
+.profile-bio {
+    font-size: 15px;
+    margin: 10px 0;
+    line-height: 20px;
+}
+
+.profile-meta {
+    margin-top: 10px;
+}
+
+.profile-meta span {
+    margin-right: 20px;
+    color: #657786;
+    font-size: 14px;
+}
+
+.profile-meta span strong {
+    color: #14171A;
+    font-weight: bold;
+}
+
+.profile-edit-form {
+    padding: 15px;
+    border-bottom: 10px solid #E1E8ED;
+}
+
+/* Form Styles (voor Signup, Login, Profile Edit) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #657786;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 2px;
+    border: 1px solid #E1E8ED;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #14171A;
+    background-color: #F5F8FA;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #1DA1F2;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Signup/Login Container */
+.signup-container {
+    max-width: 400px; /* Smaller voor netheid */
+    margin: 40px auto;
+    padding: 25px;
+    background: #FFFFFF;
+    border: 1px solid #E1E8ED;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+    font-size: 23px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #14171A;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #657786;
+}
+
+.signup-link a {
+    color: #1DA1F2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.save-profile-btn {
+    width: 100%;
+    background: #1DA1F2;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.save-profile-btn:hover {
+    background-color: #1991DB;
+}
+
+.cancel-edit-btn {
+    width: 100%;
+    background: none;
+    border: 1px solid #1DA1F2;
+    color: #1DA1F2;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.cancel-edit-btn:hover {
+    background-color: #E8F5FD;
+}
